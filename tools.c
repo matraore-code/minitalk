@@ -1,16 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 10:36:19 by matraore          #+#    #+#             */
-/*   Updated: 2019/10/22 20:55:43 by matraore         ###   ########.fr       */
+/*   Created: 2021/06/09 05:11:00 by matraore          #+#    #+#             */
+/*   Updated: 2021/06/09 05:18:23 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include <stdlib.h>
+# include <stddef.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <ctype.h>
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*src;
+	size_t			i;
+
+	src = s;
+	i = 0;
+	while (i < n)
+	{
+		src[i] = 0;
+		i++;
+	}
+}
+
+int		ft_atoi(const char *str)
+{
+	int			i;
+	int			neg;
+	long long	nb;
+
+	i = 0;
+	neg = 1;
+	nb = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - '0');
+		if (nb > 2147483648 && neg == -1)
+			return (0);
+		if (nb > 2147483648)
+			return (-1);
+		i++;
+	}
+	return (nb * neg);
+}
+
 
 int		ft_size(int nb)
 {

@@ -1,30 +1,35 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: matraore <matraore@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/09 05:15:16 by matraore          #+#    #+#              #
+#    Updated: 2021/06/09 05:29:07 by matraore         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SERVER =  server
-CLIENT= client
+CLIENT = client
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
-LIBS = -l./libft -lft
-LIBFT = libft.a
 
-all : $(LIBFT) $(SERVER) $(CLIENT)
+all : $(SERVER) $(CLIENT)
 
-$(LIBFT) : 
-	@make -C libft
+$(SERVER) : server.o ft_error.o tools.o includes/minitalk.h
+	@$(CC) server.o ft_error.o -o
 
-$(SERVER) : main_server.o error.o includes/minitalk.h
-	@$(CC) main_server.o error.o $(LIBS) -o
-
-$(CLIENT) : main_client.o error.o includes/minitalk.h
-	@$(CC) main_client.o error.o $(LIBS) -o 
+$(CLIENT) : client.o ft_error.o tools.o includes/minitalk.h
+	@$(CC) client.o error.o  -o 
 
 %.o : %.c
 	@$(CC) $(FLAGS) $< -c -I includes
 
 clean :
-	@make clean -C libft
 	@rm -f *.o
 
 fclean: clean
-	@make fclean -C libft
 	@rm -f $(SERVER) $(CLIENT)
 
 re: fclean all

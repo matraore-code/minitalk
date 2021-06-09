@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/09 05:15:28 by matraore          #+#    #+#             */
+/*   Updated: 2021/06/09 05:25:06 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <signal.h>
 #include <zconf.h>
 #include "includes/minitalk.h"
-#include "libft/libft.h"
-#include <sys/siginfo.h>
 
 
 void		activebit(int sig, siginfo_t *info, void *context)
