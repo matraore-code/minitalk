@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 05:16:00 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 05:16:01 by matraore         ###   ########.fr       */
+/*   Updated: 2021/06/09 14:14:32 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <zconf.h>
 #include "includes/minitalk.h"
 
-void		send_bit_by_bit(int pid, char *msg, size_t len)
+void		send_bit(int pid, char *msg, size_t len)
 {
 	int		shift;
 	size_t	i;
@@ -49,6 +49,8 @@ int main(int argc, char **argv)
 	    exit(0);
     }
     pid = ft_atoi(argv[1]);
-    send_bit(pid, argv[2], ft_strlen(argv[2]));
+	message = ft_strdup(argv[2]);
+	printf("%s \n", message);
+    send_bit(pid, message, ft_strlen(argv[2]));
     return (0);
 }

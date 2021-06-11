@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   tools2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 05:15:35 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 05:26:35 by matraore         ###   ########.fr       */
+/*   Created: 2021/06/09 05:37:39 by matraore          #+#    #+#             */
+/*   Updated: 2021/06/09 05:46:17 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minitalk.h"
-
-# include <stdlib.h>
-# include <stddef.h>
-# include <string.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <ctype.h>
+#include "includes/tools.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -31,12 +24,6 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void ft_error(char *str)
-{
-    write(2, str, ft_strlen(str));
-    exit(1);
-}
-
 void ft_print_pid(void)
 {
     char    *tmp;
@@ -46,4 +33,22 @@ void ft_print_pid(void)
 	write(1, tmp, ft_strlen(tmp));
 	write(1, "\n", 1);
 	free(tmp);
+}
+
+char	*ft_strdup(const char *str)
+{
+	int		i;
+	char	*dest;
+
+	i = 0;
+	dest = (char *)malloc(ft_strlen(str) + 1);
+	if (dest == NULL)
+		return (0);
+	while (str[i] != '\0')
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

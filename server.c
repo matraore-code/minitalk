@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 05:15:28 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 05:25:06 by matraore         ###   ########.fr       */
+/*   Updated: 2021/06/11 14:57:15 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ _Bool		handler(void)
 {
 	while (1)
 	{
-		pause();
+		//pause();
 		if (g_to_print.all_receive || g_to_print.buff_overflow)
 		{
 			write(1, g_to_print.message, ft_strlen(g_to_print.message));
@@ -87,4 +87,5 @@ int main(void)
 	ft_print_pid();
 	ft_bzero(g_to_print.message, BUFFSIZE);
 	handler();
+// 	write(1, g_to_print.message, ft_strlen(g_to_print.message));
 }

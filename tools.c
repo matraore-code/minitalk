@@ -6,16 +6,17 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 05:11:00 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 05:18:23 by matraore         ###   ########.fr       */
+/*   Updated: 2021/06/09 05:43:16 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdlib.h>
-# include <stddef.h>
-# include <string.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <ctype.h>
+#include "includes/tools.h"
+
+void ft_error(char *str)
+{
+    write(2, str, ft_strlen(str));
+    exit(1);
+}
 
 void	ft_bzero(void *s, size_t n)
 {
