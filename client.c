@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 05:16:00 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 14:14:32 by matraore         ###   ########.fr       */
+/*   Updated: 2021/06/11 17:54:03 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 #include <zconf.h>
 #include "includes/minitalk.h"
 
-void		send_bit(int pid, char *msg, size_t len)
+void	ft_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(1);
+}
+
+void	send_bit(int pid, char *msg, size_t len)
 {
 	int		shift;
 	size_t	i;
@@ -23,7 +29,7 @@ void		send_bit(int pid, char *msg, size_t len)
 	while (i <= len)
 	{
 		shift = 0;
-		while (shift < 7)
+		while (shift <= 7)
 		{
 			if ((msg[i] >> shift) & 1)
 				kill(pid, SIGUSR2);
@@ -36,21 +42,19 @@ void		send_bit(int pid, char *msg, size_t len)
 	}
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int pid;
-    char *message;
+	int		pid;
+	char	*message;
 
-    pid = 0;
-    if (argc != 3)
-    {
-        write(1, "utilisation: ./client [serveur-pid] [message]\n", 39);
-	    exit(0);
-    }
-    pid = ft_atoi(argv[1]);
+	pid = 0;
+	if (argc != 3)
+	{
+		ft_putstr("utilisation: ./client [serveur-pid] [message]\n");
+		exit(0);
+	}
+	pid = ft_atoi(argv[1]);
 	message = ft_strdup(argv[2]);
-	printf("%s \n", message);
-    send_bit(pid, message, ft_strlen(argv[2]));
-    return (0);
+	send_bit(pid, message, ft_strlen(argv[2]));
+	return (0);
 }

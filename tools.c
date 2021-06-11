@@ -6,17 +6,11 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 05:11:00 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 05:43:16 by matraore         ###   ########.fr       */
+/*   Updated: 2021/06/11 17:53:51 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/tools.h"
-
-void ft_error(char *str)
-{
-    write(2, str, ft_strlen(str));
-    exit(1);
-}
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -32,7 +26,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			neg;
@@ -61,10 +55,9 @@ int		ft_atoi(const char *str)
 	return (nb * neg);
 }
 
-
-int		ft_size(int nb)
+int	ft_size(int nb)
 {
-	int r;
+	int	r;
 
 	r = 0;
 	if (nb <= 0)
@@ -82,8 +75,8 @@ int		ft_size(int nb)
 
 char	*ft_fill_str(char *str, long long int n, int len)
 {
-	int l;
-	int deb;
+	int	l;
+	int	deb;
 
 	deb = 0;
 	len = ft_size(n);

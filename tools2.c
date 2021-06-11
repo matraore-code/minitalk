@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 05:37:39 by matraore          #+#    #+#             */
-/*   Updated: 2021/06/09 05:46:17 by matraore         ###   ########.fr       */
+/*   Updated: 2021/06/11 17:58:36 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void ft_print_pid(void)
+void	ft_print_pid(void)
 {
-    char    *tmp;
+	char	*tmp;
 
-    tmp = ft_itoa(getpid());
-    write(1, "pid: ", 5);
+	tmp = ft_itoa(getpid());
+	write(1, "pid: ", 5);
 	write(1, tmp, ft_strlen(tmp));
 	write(1, "\n", 1);
 	free(tmp);
@@ -51,4 +51,24 @@ char	*ft_strdup(const char *str)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i] != '\0')
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
+	}
 }
