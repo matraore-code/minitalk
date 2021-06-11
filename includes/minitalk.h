@@ -30,16 +30,11 @@
 # include <stdio.h>
 # include <ctype.h>
 
-typedef struct	s_stack
+typedef struct	s_msg
 {
-	char		message[BUFFSIZE];
-	int			top_bit;
-	int			top_byte;
-	int		all_receive;
-	int		buff_overflow;
-}				t_stack;
-
-t_stack			g_to_print = {{0}, 1 << 6, 0, FALSE, FALSE};
+	char		c;
+	size_t		size;
+}				t_msg;
 
 void			ft_error(char *str_error);
 void	ft_bzero(void *s, size_t n);
